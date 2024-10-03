@@ -19,10 +19,10 @@ class CustomButtonAppBar extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(iconData,color: active==true ? AppColor.primaryColor : AppColor.grey2,),
-          Text(
-            textbutton,
-          style: TextStyle(color: active==true ? AppColor.primaryColor : AppColor.grey2),),
+          Icon(iconData,color: active==true ? AppColor.primaryColor : AppColor.grey2,size: 30,),
+          // Text(
+          //   textbutton,
+          // style: TextStyle(color: active==true ? AppColor.primaryColor : AppColor.grey2,fontSize: 5),),
         ],
       ),
     );

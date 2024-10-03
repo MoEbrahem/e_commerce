@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/constants/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomItemsCartList extends StatelessWidget {
   final String itemsid;
@@ -28,7 +29,7 @@ class CustomItemsCartList extends StatelessWidget {
       Expanded(
         flex: 2,
         child: CachedNetworkImage(
-          height: 80,
+          height: Get.height/9,
           imageUrl: image,
         ),
       ),
@@ -57,7 +58,7 @@ class CustomItemsCartList extends StatelessWidget {
       Column(
         children: [
           SizedBox(
-            height: 35,
+            height: Get.height/20,
             child: IconButton(
               onPressed: onAdd,
               icon: const Icon(Icons.add),
@@ -65,17 +66,20 @@ class CustomItemsCartList extends StatelessWidget {
           ),
           Container(
             color: Colors.white,
-            height: 30,
+            height: Get.height/21,
+            width: Get.width/13,
             child: Text(
               counter,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: "Sans",
+                fontWeight: FontWeight.bold,
                 color: AppColor.black,
               ),
             ),
           ),
           SizedBox(
-            height: 25,
+            height: Get.height/20,
             child: IconButton(
               onPressed: onRemove,
               icon: const Icon(Icons.remove),

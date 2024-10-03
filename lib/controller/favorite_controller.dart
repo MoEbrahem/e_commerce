@@ -19,8 +19,8 @@ class FavoriteController extends GetxController {
   }
 
   addFavorite(String itemid) async {
-    // statusRequest = Statusrequest.loading;
-    // update();
+    statusRequest = Statusrequest.loading;
+    update();
 
     var response = await favoriteData.addData(
         myServices.sharedPreferences.getString("id")!, itemid);
@@ -52,6 +52,9 @@ class FavoriteController extends GetxController {
       }
       if (response?['status'] == 'failure') {
         statusRequest = Statusrequest.failure;
+          Get.rawSnackbar(
+            title: "اشعار", messageText: const Text("حدث خطأ"));
+      
       }
     }
     update();

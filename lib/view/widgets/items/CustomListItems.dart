@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/controller/Items_controller.dart';
 import 'package:ecommerce_app/controller/favorite_controller.dart';
+import 'package:ecommerce_app/core/class/handlingdataview.dart';
 import 'package:ecommerce_app/core/constants/color.dart';
 import 'package:ecommerce_app/core/constants/imageassets.dart';
 import 'package:ecommerce_app/core/functions/translatedatabase.dart';
@@ -11,10 +12,15 @@ import 'package:get/get.dart';
 
 class CustomListItems extends GetView<ItemsControllerImp> {
   final itemsModel itemsmodel;
-  const CustomListItems({super.key, required this.itemsmodel});
+  const CustomListItems({
+    super.key,
+    required this.itemsmodel,
+  });
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+
     return InkWell(
       onTap: () {
         controller.gotopageproductDetails(itemsmodel);
@@ -23,7 +29,7 @@ class CustomListItems extends GetView<ItemsControllerImp> {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
+              padding: const EdgeInsets.only(top: 4, right: 10, left: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,21 +37,21 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                   Hero(
                     tag: "${itemsmodel.itemsId}",
                     child: CachedNetworkImage(
-                      height: 100,
-                      width: 120,
-                      // fit: BoxFit.fill,
+                      height: h * 0.10,
+                      width: h * 0.3,
+                      fit: BoxFit.fill,
                       imageUrl:
                           "${AppLink.itemsImage}/${itemsmodel.itemsImage}",
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Text(
                     "${translateDatabase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
                     style: const TextStyle(
                         color: AppColor.black,
-                        fontSize: 16,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold),
                   ),
                   Row(
@@ -78,30 +84,38 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                       Text(
                         "${itemsmodel.itemspricediscount}\$",
                         style: const TextStyle(
-                            color: AppColor.primaryColor,
-                            fontFamily: "sans",
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                          color: AppColor.primaryColor,
+                          fontFamily: "sans",
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       GetBuilder<FavoriteController>(builder: (favcontroller) {
-                        return IconButton(
-                          onPressed: () {
-                            if (favcontroller.isfavorite[itemsmodel.itemsId] ==
-                                0) {
-                              favcontroller.setfavorite(itemsmodel.itemsId, 1);
-                              favcontroller
-                                  .addFavorite("${itemsmodel.itemsId}");
-                            } else {
-                              favcontroller.setfavorite(itemsmodel.itemsId, 0);
-                              favcontroller
-                                  .removeFavorite("${itemsmodel.itemsId}");
-                            }
-                          },
-                          icon: Icon(
-                            favcontroller.isfavorite[itemsmodel.itemsId] == 1
-                                ? Icons.favorite
-                                : Icons.favorite_outline_outlined,
-                            color: AppColor.primaryColor,
+                        return HandlingDataView(
+                          statusrequest: controller.statusRequest,
+                          widget: IconButton(
+                            onPressed: () {
+                              if (favcontroller
+                                          .isfavorite[itemsmodel.itemsId] ==
+                                      0 ||
+                                  favcontroller.isfavorite.isEmpty) {
+                                favcontroller.setfavorite(
+                                    itemsmodel.itemsId, 1);
+                                favcontroller
+                                    .addFavorite(itemsmodel.itemsId.toString());
+                              } else {
+                                favcontroller.setfavorite(
+                                    itemsmodel.itemsId, 0);
+                                favcontroller
+                                    .removeFavorite("${itemsmodel.itemsId}");
+                              }
+                            },
+                            icon: Icon(
+                              favcontroller.isfavorite[itemsmodel.itemsId] == 1
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline_outlined,
+                              color: AppColor.primaryColor,
+                            ),
                           ),
                         );
                       }),

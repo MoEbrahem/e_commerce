@@ -8,14 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomListFavoriteItem extends GetView<MyFavoriteController> {
-  final MyFavoriteModel itemsmodel;
-  const CustomListFavoriteItem({super.key, required this.itemsmodel});
+  final MyFavoriteModel favmodel;
+  const CustomListFavoriteItem({
+    super.key,
+    required this.favmodel,
+  });
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () {
-        // controller.gotopageproductDetails(itemsmodel);
+        controller.gotopageproductDetails(favmodel);
       },
       child: Card(
         child: Padding(
@@ -25,16 +29,18 @@ class CustomListFavoriteItem extends GetView<MyFavoriteController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CachedNetworkImage(
-                height: 110,
-                width: 130,
+                height: h * 0.121,
+                width: h * 0.2,
                 fit: BoxFit.fill,
-                imageUrl: "${AppLink.itemsImage}/${itemsmodel.itemsImage}",
+                imageUrl: "${AppLink.itemsImage}/${favmodel.itemsImage}",
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                "${translateDatabase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
+                "${translateDatabase(favmodel.itemsNameAr, favmodel.itemsName)}",
+                maxLines: 1,
+                
                 style: const TextStyle(
                     color: AppColor.black,
                     fontSize: 16,
@@ -69,7 +75,7 @@ class CustomListFavoriteItem extends GetView<MyFavoriteController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${itemsmodel.itemsPrice}\$",
+                    "${favmodel.itemsPrice}\$",
                     style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontFamily: "sans",
@@ -78,11 +84,11 @@ class CustomListFavoriteItem extends GetView<MyFavoriteController> {
                   ),
                   IconButton(
                       onPressed: () {
-                        controller.deleteFromFavorite(itemsmodel.favoriteId!);
+                        controller.deleteFromFavorite(favmodel.favoriteId!);
                       },
                       icon: const Icon(
                         Icons.delete_outline,
-                        color: AppColor.backgroundcolor,
+                        color: AppColor.secondColor,
                       ))
                 ],
               )

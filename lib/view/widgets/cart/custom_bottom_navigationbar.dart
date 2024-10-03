@@ -33,7 +33,7 @@ class CustombottombarCart extends GetView<CartController> {
           GetBuilder<CartController>(
             builder: (controller) => controller.couponName == null
                 ? Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: [
                         Expanded(
@@ -43,17 +43,17 @@ class CustombottombarCart extends GetView<CartController> {
                             decoration: InputDecoration(
                                 hintText: "Coupon Code",
                                 isDense: true,
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 5,
+                                contentPadding: EdgeInsets.only(
+                                  left: Get.width/20,
+                                  bottom: Get.width/25,
                                 ),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                                    borderRadius: BorderRadius.circular(Get.width/35))),
                           ),
                         ),
-                        const SizedBox(
-                          width: 5,
-                        ),
+                        // const SizedBox(
+                        //   width: 5,
+                        // ),
                         Expanded(
                           flex: 1,
                           child: CustomButtonCart(
@@ -67,7 +67,7 @@ class CustombottombarCart extends GetView<CartController> {
                     ),
                   )
                 : Container(
-                    padding: const EdgeInsets.all(14),
+                    padding: EdgeInsets.all(Get.width/35),
                     // decoration: BoxDecoration(
                     //   borderRadius: BorderRadius.circular(5),
                     //   border: Border.all(
@@ -95,10 +95,10 @@ class CustombottombarCart extends GetView<CartController> {
                   ),
           ),
           Container(
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
+            margin: EdgeInsets.all(Get.width/35),
+            padding:  EdgeInsets.symmetric(horizontal: Get.width/20,vertical:Get.width/35),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Get.width/32),
               border: Border.all(
                 color: AppColor.primaryColor,
                 width: 1,
@@ -109,25 +109,19 @@ class CustombottombarCart extends GetView<CartController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Text(
-                        "Price",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    const Text(
+                      "Price",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        '$price\$',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "sans",
-                        ),
+                    Text(
+                      '$price\$',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "sans",
                       ),
                     ),
                   ],
@@ -135,25 +129,20 @@ class CustombottombarCart extends GetView<CartController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Text(
-                        "Discount",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    const Text(
+                      "Discount",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        discount,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "sans",
-                        ),
+                    
+                    Text(
+                      discount,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "sans",
                       ),
                     ),
                   ],
@@ -161,60 +150,45 @@ class CustombottombarCart extends GetView<CartController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Text(
-                        "Shipping",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    const Text(
+                      "Shipping",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        shipping,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "sans",
-                        ),
+                    Text(
+                      shipping,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "sans",
                       ),
                     ),
                   ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Divider(
-                    color: Colors.black,
-                  ),
-                ),
+                 const Divider(
+                   color: Colors.black,
+                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Text(
-                        "Total Price",
-                        style: TextStyle(
-                          color: AppColor.secondColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "sans",
-                        ),
+                    const Text(
+                      "Total Price",
+                      style: TextStyle(
+                        color: AppColor.secondColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "sans",
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        '$totalPrice\$',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "sans",
-                          color: AppColor.secondColor,
-                        ),
+                    Text(
+                      '$totalPrice\$',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "sans",
+                        color: AppColor.secondColor,
                       ),
                     ),
                   ],
@@ -222,8 +196,8 @@ class CustombottombarCart extends GetView<CartController> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
+           SizedBox(
+            height: Get.height/95,
           ),
           CustomButtonCart(
             textButton: "Order",

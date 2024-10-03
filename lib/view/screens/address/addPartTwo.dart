@@ -22,39 +22,57 @@ class AddAddressDetails extends StatelessWidget {
         child: GetBuilder<AddressDetailsController>(
           builder: (controllerpage) => HandlingDataView(
             statusrequest: controllerpage.statusrequest,
-            widget: ListView(
-              children: [
-                CustomTextFormAuth(
-                  hinttext: "City name",
-                  labletext: "City",
-                  iconData: Icons.location_city,
-                  mycontroller: controllerpage.city,
-                  valid: (val) {},
-                  isNumber: false,
-                ),
-                CustomTextFormAuth(
-                  hinttext: "Street name",
-                  labletext: "Street",
-                  iconData: Icons.streetview,
-                  mycontroller: controllerpage.street,
-                  valid: (val) {},
-                  isNumber: false,
-                ),
-                CustomTextFormAuth(
-                  hinttext: "Address name",
-                  labletext: "name",
-                  iconData: Icons.near_me,
-                  mycontroller: controllerpage.city,
-                  valid: (val) {},
-                  isNumber: false,
-                ),
-                CustomButtonAuth(
-                  text: "Add",
-                  onPressed: () {
-                    controllerpage.addAddress();
-                  },
-                )
-              ],
+            widget: Form(
+              key: controllerpage.formState,
+              child: ListView(
+                children: [
+                  CustomTextFormAuth(
+                    isEmail: false,
+                    hinttext: "City name",
+                    labletext: "City",
+                    iconData: Icons.location_city,
+                    mycontroller: controllerpage.city,
+                    valid: (val) {
+                      if (val!.isEmpty) {
+                        return "This Field Can't be Empty";
+                      }
+                    },
+                    isNumber: false,
+                  ),
+                  CustomTextFormAuth(
+                    hinttext: "No of building-Street Name",
+                    labletext: "Street",
+                    isEmail: false,
+                    iconData: Icons.streetview,
+                    mycontroller: controllerpage.street,
+                    valid: (val) {
+                      if (val!.isEmpty) {
+                        return "This Field Can't be Empty";
+                      }
+                    },
+                    isNumber: false,
+                  ),
+                  CustomTextFormAuth(
+                    isEmail: false,
+                    hinttext: "Address Title",
+                    labletext: "Title",
+                    iconData: Icons.near_me,
+                    mycontroller: controllerpage.name,
+                    valid: (val) {
+                      if (val!.isEmpty) {
+                        return "This Field Can't be Empty";
+                      }
+                    },
+                    isNumber: false,
+                  ),
+                  CustomButtonAuth(
+                    text: "Add",
+                    onPressed: () {
+                      controllerpage.addAddress();
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),

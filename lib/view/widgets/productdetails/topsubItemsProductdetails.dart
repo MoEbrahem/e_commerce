@@ -5,8 +5,8 @@ import 'package:ecommerce_app/linkurl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class topProductPageDetails extends GetView<ProductdetailsControllerImp> {
-  const topProductPageDetails({super.key});
+class TopProductPageDetails extends GetView<ProductdetailsControllerImp> {
+  const TopProductPageDetails({super.key});
 
   @override
   Widget build(BuildContext context) {

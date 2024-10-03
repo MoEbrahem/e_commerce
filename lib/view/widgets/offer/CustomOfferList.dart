@@ -17,12 +17,13 @@ class CustomListOfferItems extends GetView<OfferController> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        controller.gotopageproductDetails(itemsmodel);
       },
       child: Card(
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding:  EdgeInsets.all(Get.width/45),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,15 +31,15 @@ class CustomListOfferItems extends GetView<OfferController> {
                   Hero(
                     tag: "${itemsmodel.itemsId}",
                     child: CachedNetworkImage(
-                      height: 110,
-                      width: 130,
-                      // fit: BoxFit.fill,
+                      height: Get.height / 7,
+                      width: Get.height / 5,
+                      fit: BoxFit.fill,
                       imageUrl:
                           "${AppLink.itemsImage}/${itemsmodel.itemsImage}",
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: Get.width/28,
                   ),
                   Text(
                     "${translateDatabase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}",
@@ -53,7 +54,9 @@ class CustomListOfferItems extends GetView<OfferController> {
                       Text(
                         "52".tr,
                         style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Container(
@@ -83,15 +86,24 @@ class CustomListOfferItems extends GetView<OfferController> {
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
-                      GetBuilder<FavoriteController>(
-                        builder: (favcontroller) {
+                      Text(
+                        "${itemsmodel.itemsPrice}\$",
+                        style: const TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColor.secondColor,
+                            fontFamily: "sans",
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      GetBuilder<FavoriteController>(builder: (favcontroller) {
                         return IconButton(
                           onPressed: () {
                             if (favcontroller.isfavorite[itemsmodel.itemsId] ==
-                                0) {
+                                    0 ||
+                                favcontroller.isfavorite.isEmpty) {
                               favcontroller.setfavorite(itemsmodel.itemsId, 1);
                               favcontroller
-                                  .addFavorite("${itemsmodel.itemsId}");
+                                  .addFavorite(itemsmodel.itemsId.toString());
                             } else {
                               favcontroller.setfavorite(itemsmodel.itemsId, 0);
                               favcontroller
@@ -117,7 +129,7 @@ class CustomListOfferItems extends GetView<OfferController> {
                   left: 4,
                   child: Image.asset(
                     AppImageAssets.sale,
-                    width: 40,
+                    width: Get.width / 7,
                   ))
           ],
         ),

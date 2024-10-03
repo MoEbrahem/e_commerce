@@ -1,6 +1,5 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/offer_controller.dart';
 import 'package:ecommerce_app/core/class/handlingdataview.dart';
 import 'package:ecommerce_app/core/constants/routes.dart';
@@ -16,9 +15,8 @@ class OfferView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OfferController controller = Get.put(OfferController());
-    FavoriteController favoriteController = Get.put(FavoriteController());
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin:  EdgeInsets.symmetric(horizontal: Get.width/35, vertical: Get.width/35),
       child: ListView(
         children: [
           Customappbar(
@@ -30,20 +28,22 @@ class OfferView extends StatelessWidget {
             },
             onPressedIconFav: () => Get.toNamed(AppRoute.myfavorite),
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: Get.width/25,
           ),
           HandlingDataView(
             statusrequest: controller.statusrequest,
             widget: GetBuilder<OfferController>(
-              builder: (controller) => controller.isSearching != true ?  ListView.builder(
+              builder: (controller) => controller.isSearching != true ?  
+              ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: controller.data.length,
                 itemBuilder: (context, index) => CustomListOfferItems(
                   itemsmodel: controller.data[index],
                 ),
-              ): ListItemSearch(listdataModel: controller.listData)
+              ) 
+              : ListItemSearch(listdataModel: controller.listData),
             ),
           ),
         ],

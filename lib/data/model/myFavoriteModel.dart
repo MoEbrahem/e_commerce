@@ -1,37 +1,27 @@
-class MyFavoriteModel {
+import 'package:ecommerce_app/data/model/itemsModel.dart';
+
+class MyFavoriteModel extends itemsModel{
   int? favoriteId;
   int? favoriteUserid;
   int? favoriteItemsid;
-  int? itemsId;
-  String? itemsName;
-  String? itemsNameAr;
-  String? itemsDesc;
-  String? itemsDescAr;
-  String? itemsImage;
-  int? itemsCount;
-  int? itemsActive;
-  int? itemsPrice;
-  int? itemsDiscount;
-  String? itemsDate;
-  int? itemsCat;
   int? usersId;
 
   MyFavoriteModel(
       {this.favoriteId,
       this.favoriteUserid,
       this.favoriteItemsid,
-      this.itemsId,
-      this.itemsName,
-      this.itemsNameAr,
-      this.itemsDesc,
-      this.itemsDescAr,
-      this.itemsImage,
-      this.itemsCount,
-      this.itemsActive,
-      this.itemsPrice,
-      this.itemsDiscount,
-      this.itemsDate,
-      this.itemsCat,
+      super.itemsId,
+      super.itemsName,
+      super.itemsNameAr,
+      super.itemsDesc,
+      super.itemsDescAr,
+      super.itemsImage,
+      super.itemsCount,
+      super.itemsActive,
+      super.itemsPrice,
+      super.itemsDiscount,
+      super.itemsDate,
+      super.itemsCat,
       this.usersId});
 
   MyFavoriteModel.fromJson(Map<String, dynamic> json) {

@@ -2,6 +2,7 @@
 
 import 'package:ecommerce_app/controller/homepage_controller.dart';
 import 'package:ecommerce_app/core/class/Statusrequest.dart';
+import 'package:ecommerce_app/core/constants/routes.dart';
 import 'package:ecommerce_app/core/functions/handlingdataController.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/ItemsData.dart';
@@ -37,6 +38,7 @@ class ItemsControllerImp extends SearchMixController {
     categories = Get.arguments['categories'];
     selectedCat = Get.arguments['selectedCat'];
     catid = Get.arguments['catid'];
+    
     getItems(catid!);
   }
 
@@ -68,7 +70,9 @@ class ItemsControllerImp extends SearchMixController {
 
   @override
   gotopageproductDetails(ItemsModel) {
-    Get.toNamed('productdetails', arguments: {
+    Get.toNamed(
+      AppRoute.productDetails,
+       arguments: {
       'itemsModel': ItemsModel,
     });
   }

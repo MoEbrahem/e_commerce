@@ -1,5 +1,5 @@
 class AppLink {
-  static const String server = "https://10.0.2.2/ecommerce";
+  static const String server = "https://192.168.1.7/ecommerce";
   static const String test = "$server/test.php";
 
   //===============================   Auth  ===================================================
@@ -60,7 +60,7 @@ class AppLink {
   //=============================== coupon =====================================================
 
   static const String checkcoupon   = "$server/coupon/checkCoupon.php";
-  static const String offer         = "$server/offer.php";
+  static const String offer         = "$server/offers.php";
 
   //=============================== checkout =====================================================
 

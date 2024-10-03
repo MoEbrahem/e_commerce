@@ -25,7 +25,7 @@ class CardOrdersList extends GetView<PendingOrdersController> {
                 Text(
                   "Order Number: #${listdata.ordersId}",
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                      fontSize: 18, fontWeight: FontWeight.bold,color: AppColor.black),
                 ),
                 const Spacer(),
                 Text(
@@ -38,14 +38,14 @@ class CardOrdersList extends GetView<PendingOrdersController> {
             ),
             const Divider(),
             Text(
-                "Order Type: ${controller.printOrderType(listdata.ordersType!)}"),
-            Text("Order Price: ${listdata.ordersPrice}\$"),
-            Text("Delivery Price: ${listdata.ordersPricedelivery}\$ "),
+                "Order Type:  ${controller.printOrderType(listdata.ordersType!)}"),
+            Text("Order Price:  ${listdata.ordersPrice}\$"),
+            Text("Delivery Price:  ${listdata.ordersPricedelivery}\$ "),
             Text(
-              "Payment Method: ${controller.printPaymentMethod(listdata.ordersPaymentmethod!)}",
+              "Payment Method:  ${controller.printPaymentMethod(listdata.ordersPaymentmethod!)}",
             ),
             Text(
-                "Order Status: ${controller.printOrderStatus(listdata.ordersStatus!)}"),
+                "Order Status:  ${controller.printOrderStatus(listdata.ordersStatus!)}"),
             const Divider(),
             Row(
               children: [

@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/localization/translation.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -30,17 +31,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     LocaleController controller = Get.put(LocaleController());
 
-    return GetMaterialApp(
-      
-      getPages: route,
-      locale: controller.language,
-      translations: MyTranslation(),
-      debugShowCheckedModeBanner: false,
-      title: 'ecommerceApp',
-      initialBinding: InitialBindings(),
-      theme: controller.appTheme,
+    return ScreenUtilInit(
+      designSize: const Size(430, 932),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          getPages: route,
+          locale: controller.language,
+          translations: MyTranslation(),
+          debugShowCheckedModeBanner: false,
+          title: 'ecommerceApp',
+          initialBinding: InitialBindings(),
+          theme: controller.appTheme,
+          home: child,
+        );
+      },
     );
   }
 }

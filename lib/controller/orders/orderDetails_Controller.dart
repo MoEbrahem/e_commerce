@@ -12,7 +12,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class OrderDetailsController extends GetxController {
   late OrdersModel ordersModel;
-  Completer<GoogleMapController>? completerController;
+  late Completer<GoogleMapController> completerController;
   CameraPosition? cameraPosition;
   List<Marker> markers = [];
   late Statusrequest statusrequest;

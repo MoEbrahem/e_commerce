@@ -67,7 +67,8 @@ class OrdersDetails extends StatelessWidget {
                               ),
                               ...List.generate(
                                 controller.data.length,
-                                (index) => TableRow(children: [
+                                (index) => TableRow(
+                                  children: [
                                   Text(
                                     "${controller.data[index].itemsName}",
                                     textAlign: TextAlign.center,
@@ -129,7 +130,7 @@ class OrdersDetails extends StatelessWidget {
                         ),
                       },
                       onMapCreated: (GoogleMapController mapcontroller) {
-                        controller.completerController!.complete(mapcontroller);
+                        controller.completerController.complete(mapcontroller);
                       },
                       markers: controller.markers.toSet(),
                     ),

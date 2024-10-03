@@ -9,7 +9,7 @@ class AppRoute {
   static const String successresetPassword = "/successresetPassword";
   static const String successSignup = "/successSignup";
   static const String verifyCodeSignup = '/VerifyCodeSignup';
-  //static const String language                   = "/Language";
+  static const String language                   = "/Language";
 
   //  Home
   static const String HomePage = '/homepage';

@@ -50,7 +50,8 @@ class Login extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
                 child: Form(
                   key: controller.formState,
-                  child: ListView(children: [
+                  child: ListView(
+                    children: [
                     const LogoAuth(),
                     CustomTextTitleAuth(title: "2".tr),
                     const SizedBox(
@@ -65,6 +66,7 @@ class Login extends StatelessWidget {
                         return ValidInput(val!, 5, 30, 'email');
                       },
                       mycontroller: controller.email,
+                      isEmail: true,
                       labletext: "4".tr,
                       hinttext: "5".tr,
                       iconData: Icons.email_outlined,
@@ -74,6 +76,7 @@ class Login extends StatelessWidget {
                       obscuretext: controller.isshowPassword,
                       isNumber: false,
                       mycontroller: controller.password,
+                      isEmail: false,
                       labletext: "6".tr,
                       hinttext: "7".tr,
                       iconData: Icons.lock_outline_rounded,

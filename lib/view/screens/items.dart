@@ -19,45 +19,47 @@ class Items extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-          padding: const EdgeInsets.all(15),
-          child: GetBuilder<ItemsControllerImp>(
-              builder: (controller) => ListView(
-                    children: [
-                      Customappbar(
-                        mycontroller: controller.searchcontroller,
-                        title: '46'.tr,
-                        onpressedSearch: () {
-                          controller.gotopageproductDetails(controller.listData);
-                        },
-                        onPressedIconFav: () {
-                          Get.toNamed(AppRoute.myfavorite);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const ListCategoriesItems(),
-                      HandlingDataView(
-                          statusrequest: controller.statusRequest,
-                          widget: GridView.builder(
-                              itemCount: controller.data.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2, childAspectRatio: 0.7),
-                              itemBuilder: (context, index) {
-                                favcontroller.isfavorite[controller.data[index]
-                                        ['items_id']] =
-                                    controller.data[index]['favorite'];
+        padding: const EdgeInsets.all(15),
+        child: GetBuilder<ItemsControllerImp>(
+          builder: (controller) => ListView(
+            children: [
+              Customappbar(
+                mycontroller: controller.searchcontroller,
+                title: '46'.tr,
+                onpressedSearch: () {
+                  controller.gotopageproductDetails(controller.listData);
+                },
+                onPressedIconFav: () {
+                  Get.toNamed(AppRoute.myfavorite);
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const ListCategoriesItems(),
+              HandlingDataView(
+                statusrequest: controller.statusRequest,
+                widget: GridView.builder(
+                  itemCount: controller.data.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 0.7,),
+                  itemBuilder: (context, index) {
+                    favcontroller
+                            .isfavorite[controller.data[index]['items_id']] =
+                        controller.data[index]['favorite'];
 
-                                return CustomListItems(
-                                  itemsmodel: itemsModel
-                                      .fromJson(controller.data[index]),
-                                );
-                              })),
-                    ],
-                  ))),
+                    return CustomListItems(
+                      itemsmodel: itemsModel.fromJson(controller.data[index]),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

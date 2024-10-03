@@ -20,14 +20,15 @@
       <intent>
         <action android:name="android.support.customtabs.action.CustomTabsService" />
       </intent>
+      <package android:name="com.google.android.apps.maps"/>
     </queries>
     <application
-
         android:label="ecommerce_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:roundIcon= "@mipmap/launcher_icon"
+        android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyAQx8H7IEOnJV5BBNZfvRjddMUpyxhK8IQ"/>
+               android:value="AIzaSyC48aJ0rwqbA18RL7EmEMZiGMCqXhN2DDE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

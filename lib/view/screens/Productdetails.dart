@@ -19,7 +19,10 @@ class Productdetails extends StatelessWidget {
           backgroundColor: AppColor.secondColor,
           leading: IconButton(
             onPressed: () => Get.back(),
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(
+              Icons.arrow_back,
+              color: AppColor.whiteColor,
+            ),
           ),
         ),
         bottomNavigationBar: Container(
@@ -45,7 +48,7 @@ class Productdetails extends StatelessWidget {
                   widget: ListView(
                     scrollDirection: Axis.vertical,
                     children: [
-                      const topProductPageDetails(),
+                      const TopProductPageDetails(),
                       const SizedBox(
                         height: 100,
                       ),

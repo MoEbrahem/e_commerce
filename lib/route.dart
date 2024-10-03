@@ -26,7 +26,7 @@ import 'package:ecommerce_app/view/screens/orders/pending.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-List<GetPage<dynamic>>? route =
+List<GetPage<dynamic>> route =
 [
 
 
@@ -57,12 +57,12 @@ List<GetPage<dynamic>>? route =
   GetPage(name: AppRoute.myfavorite, page:          ()=> const  MyFavorite()),
   GetPage(name: AppRoute.notification, page:        ()=> const  NotificationScreen()),
   GetPage(name: AppRoute.mycart, page:              ()=> const  Cart()),
-  GetPage(name: AppRoute.checkout, page:            ()=> const  CheckOut()),
+  // GetPage(name: AppRoute.checkout, page:            ()=> const  CheckOut()),
 
   //   Address
   
   GetPage(name: AppRoute.addressView, page:         ()=> const  ViewAddress()),
-  GetPage(name: AppRoute.addAddress, page:          ()=> const  AddAddress()),
+  GetPage(name: AppRoute.addAddress, page:          ()=> AddAddress()),
   GetPage(name: AppRoute.addressDetails, page:      ()=> const  AddAddressDetails()),
 
   //   Orders

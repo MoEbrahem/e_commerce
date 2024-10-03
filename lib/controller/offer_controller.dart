@@ -12,6 +12,8 @@ class OfferController extends SearchMixController {
   List<itemsModel> data = [];
 
   getData() async {
+    // Get.put(FavoriteController());
+
     statusrequest = Statusrequest.loading;
     update();
     var response = await offerData.getData();

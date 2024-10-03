@@ -19,13 +19,15 @@ class PendingOrder extends StatelessWidget {
         child: GetBuilder<PendingOrdersController>(
           builder: (controller) => HandlingDataView(
             statusrequest: controller.statusrequest,
-            widget: ListView.builder(
+            widget:controller.data.isNotEmpty ? ListView.builder(
               itemCount: controller.data.length,
               itemBuilder: (context, index) {
                 return CardOrdersList(
                   listdata: controller.data[index],
                 );
               },
+            ): const Center(
+              child: Text("There is no Pending Orders Now"),
             ),
           ),
         ),

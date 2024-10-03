@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/class/Statusrequest.dart';
+import 'package:ecommerce_app/core/constants/color.dart';
 import 'package:ecommerce_app/core/constants/imageassets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -12,9 +13,10 @@ class HandlingDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusrequest == Statusrequest.loading
-        ? Center(
-            child:
-                Lottie.asset(AppImageAssets.Loading, width: 250, height: 250))
+        ? const Center(
+            child: CircularProgressIndicator(color: AppColor.primaryColor,)
+                // Lottie.asset(AppImageAssets.Loading, width: 250, height: 250)
+                )
         : statusrequest == Statusrequest.serverFailure
             ? Center(
                 child: Lottie.asset(AppImageAssets.ServerError,
@@ -44,9 +46,11 @@ class HandlingDataRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusrequest == Statusrequest.loading
-        ? Center(
+        ? const Center(
             child:
-                Lottie.asset(AppImageAssets.Loading, width: 250, height: 250))
+                // Lottie.asset(AppImageAssets.Loading, width: 250, height: 250)
+                CircularProgressIndicator(color: AppColor.primaryColor,)
+                )
         : statusrequest == Statusrequest.serverFailure
             ? Center(
                 child: Lottie.asset(AppImageAssets.ServerError,

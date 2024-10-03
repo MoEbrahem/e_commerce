@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/constants/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomTextSignUpOrSignIn extends StatelessWidget {
   final String textone;
@@ -14,8 +15,8 @@ class CustomTextSignUpOrSignIn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(textone),
-        const SizedBox(
-          width: 5,
+        SizedBox(
+          width: Get.width/55,
         ),
         InkWell(
           onTap: onTap,

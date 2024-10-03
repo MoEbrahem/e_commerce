@@ -52,6 +52,7 @@ class ForgetPassword extends StatelessWidget {
                   height: 25,
                 ),
                 CustomTextFormAuth(
+                  isEmail: true,
                   isNumber: false,
                   valid: (val) {
                     return ValidInput(val!, 5, 30, 'email');

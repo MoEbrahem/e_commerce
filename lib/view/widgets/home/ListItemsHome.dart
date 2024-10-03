@@ -11,7 +11,7 @@ class ListItemsHome extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140,
+      height: Get.height/6,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: controller.items.length,
@@ -36,13 +36,13 @@ class ItemsHome extends GetView<HomeControllerImp> {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            margin: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: Get.width/38, vertical: Get.width/38),
+            margin: EdgeInsets.symmetric(horizontal: Get.width/32),
             child: Image.network(
               '${AppLink.itemsImage}/${itemsmodel.itemsImage}',
               fit: BoxFit.fill,
-              height: 110,
-              width: 140,
+              height: Get.height/3,
+              width: Get.height/5.2,
             ),
           ),
           Container(
@@ -58,6 +58,7 @@ class ItemsHome extends GetView<HomeControllerImp> {
             right: controller.lang == "ar" ? 10 : null,
             child: Text(
               '${translateDatabase(itemsmodel.itemsNameAr, itemsmodel.itemsName)}',
+              maxLines: 1,
               style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w900,

@@ -16,7 +16,9 @@ class PendingOrdersController extends GetxController {
     statusrequest = Statusrequest.loading;
     update();
     var response = await pendingordersData
-        .getOrders(myServices.sharedPreferences.getString("id")!);
+        .getOrders(
+          myServices.sharedPreferences.getString("id").toString()
+          );
     statusrequest = handlingData(response);
     if (statusrequest == Statusrequest.success) {
       if (response['status'] == "success") {

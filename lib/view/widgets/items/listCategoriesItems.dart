@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListCategoriesItems extends GetView<ItemsControllerImp> {
+  
   const ListCategoriesItems({super.key});
 
   @override
@@ -35,7 +36,7 @@ class Categories extends GetView<ItemsControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.onCatChanged(i,categoriesModel.categoriesId.toString());
+        controller.onCatChanged(i, categoriesModel.categoriesId.toString());
       },
       child: Column(
         children: [
@@ -46,8 +47,10 @@ class Categories extends GetView<ItemsControllerImp> {
                     decoration: controller.selectedCat == i
                         ? const BoxDecoration(
                             border: Border(
-                                bottom: BorderSide(
-                                    color: AppColor.primaryColor, width: 3)))
+                              bottom: BorderSide(
+                                  color: AppColor.primaryColor, width: 3),
+                            ),
+                          )
                         : null,
                     child: Text(
                       '${translateDatabase(categoriesModel.categoriesNameAr, categoriesModel.categoriesName)}',

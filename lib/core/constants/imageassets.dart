@@ -14,7 +14,7 @@ class AppImageAssets {
   static const String ImageAssetsThree = '$ImageRoot/three.PNG';
   //static const String ImageAssetsFour  = '$ImageRoot/onboarding4.png';
 
-  static const String Loading = '$LottieRoot/loadingcart.json';
+  static const String Loading = '$LottieRoot/loadingcartsuccess.json';
   static const String chechoutsuccess = '$LottieRoot/loadingcartsuccess.json';
   static const String NoData = '$LottieRoot/Nodata.json';
   static const String Offline = '$LottieRoot/offline.json';

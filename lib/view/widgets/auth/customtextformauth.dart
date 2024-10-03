@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/constants/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
@@ -8,9 +9,9 @@ class CustomTextFormAuth extends StatelessWidget {
   final String? Function(String?)? valid;
   final TextEditingController? mycontroller;
   final bool isNumber;
+  final bool isEmail;
   final bool? obscuretext;
-  final Function()? onTapIcon ;
-
+  final Function()? onTapIcon;
 
   const CustomTextFormAuth({
     super.key,
@@ -20,35 +21,43 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.mycontroller,
     required this.valid,
     required this.isNumber,
-    this.obscuretext,  
+    required this.isEmail,
+    this.obscuretext,
     this.onTapIcon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: Get.width/15),
       child: TextFormField(
         obscureText: obscuretext == null || obscuretext == false ? false : true,
         keyboardType: isNumber == true
-            ? const TextInputType.numberWithOptions(decimal: true)
-            : TextInputType.text,
+            ? const TextInputType.numberWithOptions(
+                decimal: true,
+              )
+            : isEmail == true
+                ? TextInputType.emailAddress
+                : TextInputType.text,
         validator: valid,
         controller: mycontroller,
+        style: const TextStyle(color: AppColor.black),
         decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 8, horizontal: 37),
+            contentPadding: EdgeInsets.symmetric(
+              vertical: Get.width/35,
+              horizontal: Get.width/12,
+            ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             suffixIcon: InkWell(
               onTap: onTapIcon,
               child: Icon(
                 iconData,
                 color: AppColor.grey,
-                size: 20,
+                size: Get.width/15,
               ),
             ),
             label: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 9),
+              margin:  EdgeInsets.symmetric(horizontal: Get.width/40),
               child: Text(
                 labletext,
                 style: const TextStyle(fontSize: 18, color: AppColor.grey),
@@ -57,7 +66,7 @@ class CustomTextFormAuth extends StatelessWidget {
             hintText: hinttext,
             hintStyle: const TextStyle(fontSize: 14),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Get.width/15),
             )),
       ),
     );

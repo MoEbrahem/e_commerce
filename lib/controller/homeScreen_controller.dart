@@ -17,7 +17,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     
     const NotificationScreen(),
 
-    const Settings(),
+    Settings(),
 
     const OfferView()
     

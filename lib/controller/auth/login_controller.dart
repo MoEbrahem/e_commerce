@@ -14,7 +14,6 @@ abstract class loginController extends GetxController {
 }
 
 class loginControllerImp extends loginController {
-  //List data = [];
   late TextEditingController email;
   late TextEditingController password;
   MyServices myServices = Get.find();
@@ -34,7 +33,11 @@ class loginControllerImp extends loginController {
     if (formState.currentState!.validate()) {
       statusrequest = Statusrequest.loading;
       update();
+      print("======================   1   =================================");
+      
       var response = await loginData.postData(email.text, password.text);
+       
+      print("===============================================================");
       statusrequest = handlingData(response);
       if (statusrequest == Statusrequest.success) {
         if (response['status'] == 'success') {

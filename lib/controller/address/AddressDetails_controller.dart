@@ -8,31 +8,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddressDetailsController extends GetxController {
-  Statusrequest statusrequest = Statusrequest.loading;
+  Statusrequest statusrequest = Statusrequest.none;
   String? lat;
   String? long;
   List<AddressModel> data = [];
   AddressData addressData = AddressData(Get.find());
-  TextEditingController? name;
-  TextEditingController? city;
-  TextEditingController? street;
+  late TextEditingController name;
+  late TextEditingController city;
+  late TextEditingController street;
   MyServices myServices = Get.find();
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
 
   initialData() {
     lat = Get.arguments['lat'];
     long = Get.arguments['long'];
-    print(lat);
-    print(long);
   }
 
   addAddress() async {
+    if(formState.currentState!.validate()){
+      
     statusrequest = Statusrequest.loading;
     update();
     var response = await addressData.addData(
-      myServices.sharedPreferences.getString("id")!,
-      name!.text,
-      city!.text,
-      street!.text,
+      myServices.sharedPreferences.getString("id").toString(),
+      name.text,
+      city.text,
+      street.text,
       lat.toString(),
       long.toString(),
     );
@@ -46,6 +47,7 @@ class AddressDetailsController extends GetxController {
       }
     }
     update();
+    }
   }
 
   @override
@@ -59,9 +61,9 @@ class AddressDetailsController extends GetxController {
 
   @override
   void dispose() {
-    name!.dispose();
-    street!.dispose();
-    city!.dispose();
+    name.dispose();
+    street.dispose();
+    city.dispose();
     super.dispose();
   }
 }

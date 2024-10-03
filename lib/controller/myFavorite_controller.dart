@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/class/Statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdataController.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/myfavoriteData.dart';
+import 'package:ecommerce_app/data/model/itemsModel.dart';
 import 'package:ecommerce_app/data/model/myFavoriteModel.dart';
 import 'package:get/get.dart';
 
@@ -45,6 +46,14 @@ class MyFavoriteController extends GetxController {
       (element) => element.favoriteId == favid,
     );
     update();
+  }
+
+  gotopageproductDetails(itemsModel itemsModel) {
+    Get.toNamed(
+      'productdetails', 
+      arguments: {
+      'itemsModel': itemsModel,
+    });
   }
 
   @override

@@ -37,13 +37,15 @@ class CheckOutController extends GetxController {
   }
 
   checkout() async {
-    if (paymentMethod == null)
+    if (paymentMethod == null){
       return Get.snackbar("Error", "Please Select your Payment Method");
-
-    if (deliveryType == null)
+    }
+    if (deliveryType == null) {
       return Get.snackbar("Error", "Please Select your Delivery Type");
-    if (listModelAddress.isEmpty)
+    }
+    if (listModelAddress.isEmpty) {
       return Get.snackbar("Error", "Please Select your Delivery Type");
+    }
 
     statusrequest = Statusrequest.loading;
     update();
@@ -57,7 +59,6 @@ class CheckOutController extends GetxController {
       "paymentmethod": paymentMethod,
       "discountcoupon": discountcoupon
     };
-
     var response = await checkOutData.checkOutData(data);
     statusrequest = handlingData(response);
     if (statusrequest == Statusrequest.success) {

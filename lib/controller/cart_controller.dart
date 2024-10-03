@@ -12,6 +12,7 @@ class CartController extends GetxController {
   CouponModel? couponModel;
   String? couponName;
   String? couponid;
+  int Shipping = 20;
   late Statusrequest statusrequest;
   MyServices myServices = Get.find();
   CartData cartData = CartData(Get.find());
@@ -66,7 +67,7 @@ class CartController extends GetxController {
   }
 
   getTotalPrice() {
-    return totalprice - (totalprice * (discountcoupon! / 100));
+    return totalprice - (totalprice * (discountcoupon! / 100)) + Shipping;
   }
 
   checkCoupon() async {
@@ -113,7 +114,11 @@ class CartController extends GetxController {
           List dataresponse = response['data']['data'];
           Map dataCountPrice = response['countprice'];
           data.clear();
-          data.addAll(dataresponse.map((e) => CartModel.fromJson(e)));
+          data.addAll(
+            dataresponse.map((e) => CartModel.fromJson(e)),
+          );
+          myServices.sharedPreferences
+              .setString("order_userid", data[0].cartUsersid.toString());
           totalprice = double.parse(dataCountPrice['totalprice'].toString());
           totalcount = int.parse(dataCountPrice['totalcount'].toString());
         }

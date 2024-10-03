@@ -43,8 +43,9 @@ class AddressData {
     String lat,
     String long,
   ) async {
-    var response = await crud.postRequest(AppLink.addAddress, {
-      "userid": userid,
+    var response = await crud.postRequest(
+      AppLink.addAddress, {
+      "usersid": userid,
       "name": name,
       "city": city,
       "street": street,

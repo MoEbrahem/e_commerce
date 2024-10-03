@@ -51,6 +51,8 @@ class ResetPassword extends StatelessWidget {
                   height: 25,
                 ),
                 CustomTextFormAuth(
+                  isEmail: false,
+
                   isNumber: false,
                   valid: (val) {
                     return ValidInput(val!, 5, 30, 'password');
@@ -61,6 +63,7 @@ class ResetPassword extends StatelessWidget {
                   iconData: Icons.password,
                 ),
                 CustomTextFormAuth(
+                  isEmail: false,
                   isNumber: false,
                   valid: (val) {
                     return ValidInput(val!, 5, 30, 'password');

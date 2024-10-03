@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LogoAuth extends StatelessWidget {
   const LogoAuth({super.key});
@@ -8,7 +9,7 @@ class LogoAuth extends StatelessWidget {
     return Image.asset(
       "assets/images/loGo.png",
       
-      height: 140,
+      height: Get.height/5.5,
 
       );
   }

@@ -23,10 +23,12 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Get.toNamed(AppRoute.mycart);
           },
-          child: const Icon(Icons.shopping_basket_outlined),
+          child: const Icon(Icons.shopping_cart,color: AppColor.whiteColor,),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      
         bottomNavigationBar: const CustomBottomAppBarHome(),
+        
         body: WillPopScope(
           child: controller.listpages.elementAt(controller.currentpage),
           onWillPop: () {
