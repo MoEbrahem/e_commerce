@@ -12,7 +12,6 @@ import 'package:ecommerce_app/view/screens/auth/forgetPassword/resetPassword.dar
 import 'package:ecommerce_app/view/screens/auth/signUp.dart';
 import 'package:ecommerce_app/view/screens/auth/verifycodesignup.dart';
 import 'package:ecommerce_app/view/screens/cart.dart';
-import 'package:ecommerce_app/view/screens/checkOut.dart';
 import 'package:ecommerce_app/view/screens/homeScreen.dart';
 import 'package:ecommerce_app/view/screens/items.dart';
 import 'package:ecommerce_app/view/screens/language.dart';

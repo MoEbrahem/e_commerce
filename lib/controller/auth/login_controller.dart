@@ -36,7 +36,7 @@ class loginControllerImp extends loginController {
       print("======================   1   =================================");
       
       var response = await loginData.postData(email.text, password.text);
-       
+      
       print("===============================================================");
       statusrequest = handlingData(response);
       if (statusrequest == Statusrequest.success) {
@@ -52,6 +52,8 @@ class loginControllerImp extends loginController {
             myServices.sharedPreferences.setString('step', '2');
             FirebaseMessaging.instance.subscribeToTopic("user");
             FirebaseMessaging.instance.subscribeToTopic("user$id");
+
+            
             Get.offNamed(AppRoute.HomePage);
           } else {
             Get.toNamed(AppRoute.verifyCodeSignup,
